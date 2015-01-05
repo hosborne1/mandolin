@@ -36,7 +36,7 @@ class FeatureContext extends BehatContext
      */
     public function iAmInDirectory($arg1)
     {
-        throw new PendingException();
+        chdir($arg1);
     }
 
     /**
@@ -44,7 +44,8 @@ class FeatureContext extends BehatContext
      */
     public function iRun($arg1)
     {
-        throw new PendingException();
+        exec($arg1, $output);
+        $this->output = trim(implode("\n", $output));
     }
 
     /**
