@@ -33,24 +33,19 @@
       <section id="main_content" class="inner">
         <h1>What is mandolin?</h1>
         <p>mandolin is a utility for slicing up Gherkin files which are used as part of Behavior Driven Development.</p>
-
         <h2>Why?</h2>
         <p>Gherkin is great but one of its main strengths, having a simple clear editable-by-anyone format, can also present issues with scalability and maintenance when reusing the scenarios for regression testing.</p>
         <p>By providing a way to strip out and then re-merge tables to and from separate pipe delimited text files, the data can be managed in any way you like</p>
-
         <p>mandolin can do the following:</p>
-
         <ul>
           <li>strip out tables and place each one in a pipe separated file</li>
           <li>merge a feature file (containing table placeholders) with a set of pipe separated data files</li>
         </ul>
-
         <h2>How?</h2>
         <p>mandolin is a short script written in perl which takes arguments telling it what to do. The reason for choosing perl (which admittedly doesn't feature large in BDD circles) is to have something that will work with any tooset, whether it be JBehave, Cucumber, Behat, Lettuce etc.</p>
         <ul>
         <li>to extract tables as pipe delimited test files: mandolin.pl -e name_of_feature_file.feature</li>
-        <li>it will then create a directory and place a new feature file with placeholders for tables in the form of: '<<Table1>>' 
-        and a series of text files each one containing a corresponding table. This may be very useful or very annoying if all you want to do is extract one or two tables. In that case, just extract the tables manually using a well-formed placeholder then perform a merge</li>
+        <li>it will then create a directory and place a new feature file with placeholders for tables and a series of text files each one containing a corresponding table. This may be very useful or very annoying if all you want to do is extract one or two tables. In that case, just extract the tables manually using a well-formed placeholder then perform a merge</li>
         </ul>
         <ul>
         <li>to merge a feature file with one or more tables: mandolin.pl -m name_of_feature_file.feature</li>
