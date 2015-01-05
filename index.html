@@ -4,7 +4,7 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Mandolin : slices up gherkin to make it more versatile">
+    <meta name="description" content="Mandolin : slices up Gherkin to make it more versatile">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
@@ -19,7 +19,7 @@
           <a id="forkme_banner" href="https://github.com/hosborne1/mandolin">View on GitHub</a>
 
           <h1 id="project_title">Mandolin</h1>
-          <h2 id="project_tagline">slices up gherkin to make it more versatile</h2>
+          <h2 id="project_tagline">slices up Gherkin to make it more versatile</h2>
 
             <section id="downloads">
               <a class="zip_download_link" href="https://github.com/hosborne1/mandolin/zipball/master">Download this project as a .zip file</a>
@@ -32,16 +32,17 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>
-<a id="what-does-mandolin-do" class="anchor" href="#what-does-mandolin-do" aria-hidden="true"><span class="octicon octicon-link"></span></a>What does mandolin do?</h1>
+<a id="what-does-mandolin-do" class="anchor" href="#what-does-mandolin-do" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is mandolin?</h1>
 
-<p>mandolin slices up gherkin to make it more versatile</p>
+<p>mandolin is a utility for slicing up Gherkin files which are used as part of Behavior Driven Development.</p>
 
 <h1>
 <a id="why" class="anchor" href="#why" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why?</h1>
 
-<p>gherkin is great but scenarios, particularly scenario outlines, have their data embedded. What if data needs to change over time or needs to come from another data source before a test is run? </p>
-
-<p>Mandolin has two functions:</p>
+<p>Gherkin is great but one of its main strengths, having a simple clear editable-by-anyone format, 
+can also present issues with scalability and maintenance when reusing the scenarios for regression testing.</p>
+<p>By providing a way to strip out and then re-merge tables to and from separate pipe delimited text files, 
+the data can be managed in any way you like</p>
 
 <p>mandolin can do the following:</p>
 
@@ -49,6 +50,8 @@
 <li>strip out tables and place each one in a pipe separated file</li>
 <li>merge a feature file (containing table placeholders) with a set of pipe separated data files</li>
 </ul>
+
+<p></p>
       </section>
     </div>
 
