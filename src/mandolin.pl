@@ -9,7 +9,17 @@ $count = 1;
 $tableName = "";
 $tableData = "";
 $featureFile = "";
+$fileSeparator = "";
+#use time to create a unique id for folders and files
 $epoc = time();
+
+#check the operating system as set file separator accordingly
+if($^O =~ /win.+|msys/){
+    $fileSeparator = "\\";
+}
+else{
+    $fileSeparator = "/";
+}
 
 #read the first argument to see if we are extracting tables or merging them - if neither then show some help
 if(@ARGV[0] eq "-e"){
@@ -32,7 +42,6 @@ if(@ARGV[0] eq "-e"){
                 #print "in table $inTable\n";
                 #create a new name for the table
                 $tableName = $tablePrefix.$count;
-                print "tableName $tableName\n";
                 $count++;
                 $tableData = "";
             }
@@ -55,7 +64,7 @@ if(@ARGV[0] eq "-e"){
     }
     close (FEATUREFILE);
     if($inTable eq true){writeTableData();}
-    writeNewFeatureFile();
+    writeNewFeatureFile("$epoc$fileSeparator$featureFile");
 }
 
 elsif(@ARGV[0] eq "-m"){
@@ -77,23 +86,24 @@ elsif(@ARGV[0] eq "-m"){
             $featureFileOutput .= $line;
         }
     }
-    open (NEWFEATUREFILE, ">>$featureFile.$epoc") or die("Could not open file $epoc/$featureFile"); 
-    print NEWFEATUREFILE $featureFileOutput;
-    close (NEWFEATUREFILE);
+    writeNewFeatureFile("$featureFile.$epoc")
 }
 else{
- print "-e to extract -m to merge \n";   
+ print "-e to extract\n-m to merge\n";   
 }
 
 sub writeTableData{
-    open (TABLEFILE, ">>$epoc/$tableName") or die("Could not open file $epoc/$tableName"); 
+    open (TABLEFILE, ">>$epoc$fileSeparator$tableName") or die("Could not open file $epoc$fileSeparator$tableName"); 
     print TABLEFILE $tableData; 
     close (TABLEFILE);
     $featureFileOutput .= "<<".$tableName.">>\n";
+    print "Created table name: $tableName\n";
 }
 
 sub writeNewFeatureFile{
-    open (NEWFEATUREFILE, ">>$epoc/$featureFile") or die("Could not open file $epoc/$featureFile"); 
+    $filename = $_[0];
+    open (NEWFEATUREFILE, ">>$filename") or die("Could not create file $filename"); 
     print NEWFEATUREFILE $featureFileOutput;
     close (NEWFEATUREFILE);
+    print "Created feature file: $filename\n";
 }
