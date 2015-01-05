@@ -34,7 +34,7 @@
         <h1>What is mandolin?</h1>
         <p>mandolin is a utility for slicing up Gherkin files which are used as part of Behavior Driven Development.</p>
 
-        <h1>Why?</h1>
+        <h2>Why?</h2>
         <p>Gherkin is great but one of its main strengths, having a simple clear editable-by-anyone format, can also present issues with scalability and maintenance when reusing the scenarios for regression testing.</p>
         <p>By providing a way to strip out and then re-merge tables to and from separate pipe delimited text files, the data can be managed in any way you like</p>
 
@@ -45,7 +45,7 @@
           <li>merge a feature file (containing table placeholders) with a set of pipe separated data files</li>
         </ul>
 
-        <h1>How?</h1>
+        <h2>How?</h2>
         <p>mandolin is a short script written in perl which takes arguments telling it what to do. The reason for choosing perl (which admittedly doesn't feature large in BDD circles) is to have something that will work with any tooset, whether it be JBehave, Cucumber, Behat, Lettuce etc.</p>
         <ul>
         <li>to extract tables as pipe delimited test files: mandolin.pl -e name_of_feature_file.feature</li>
@@ -55,11 +55,11 @@
         <ul>
         <li>to merge a feature file with one or more tables: mandolin.pl -m name_of_feature_file.feature</li>
         </ul>
-        <h1>Does it do anything else?</h1>
+        <h2>Does it do anything else?</h2>
         <p>No - but it may be useful to have a way of managing locators. Page Objects and other paradigms for creating and managing an imprint of the system under test doesn't really have a representation in Gherkin. Perhaps it would be nice if mandolin substituted locater placeholders with values held in a corresponding repository. When the system under test changes, the corresponding entry in the repository would be changed rather.</p>
-        <h1>Can it be made to for something other than perl?</h1>
+        <h2>Can I have a script in something other than perl?</h2>
         <p>Yes, just let me know and I'll see what I can do. Or you could do it yourself...</p>
-        <h1>Feedback</h1>
+        <h2>Feedback</h2>
         <p>I'd like to know what you think. Especially if you could improve it or do things in a better, easier, happier way which didn't involve harming kittens.</p>
       </section>
     </div>
