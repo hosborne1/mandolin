@@ -30,15 +30,44 @@ class FeatureContext extends BehatContext
         // Initialize your context here
     }
 
-//
-// Place your definition and hook methods here:
-//
-//    /**
-//     * @Given /^I have done something with "([^"]*)"$/
-//     */
-//    public function iHaveDoneSomethingWith($argument)
-//    {
-//        doSomethingWith($argument);
-//    }
-//
+
+    /**
+     * @Given /^I am in directory "([^"]*)"$/
+     */
+    public function iAmInDirectory($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When /^I run "([^"]*)"$/
+     */
+    public function iRun($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then /^I should get a new directory$/
+     */
+    public function iShouldGetANewDirectory()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^it should contain the modified feature file "([^"]*)"$/
+     */
+    public function itShouldContainTheModifiedFeatureFile($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given /^it should contain the data file "([^"]*)"$/
+     */
+    public function itShouldContainTheDataFile($arg1)
+    {
+        throw new PendingException();
+    }
 }

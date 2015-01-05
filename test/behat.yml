@@ -1,0 +1,8 @@
+# behat.yml
+default:
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: https://php-hosborne.c9.io/
+            goutte: ~
+            selenium2:
+                browser: 'chrome'
