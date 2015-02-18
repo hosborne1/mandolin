@@ -12,6 +12,8 @@ $featureFile = "";
 $fileSeparator = "";
 #use time to create a unique id for folders and files
 $epoc = time();
+$newdirectorystructure = "";
+$tableDir = "tables";
 
 #check the operating system as set file separator accordingly
 if($^O =~ /win.+|msys/){
@@ -24,7 +26,10 @@ else{
 #read the first argument to see if we are extracting tables or merging them - if neither then show some help
 if(@ARGV[0] eq "-e"){
     #create a results directory and put the new feature file and any data files in it
-    `mkdir $epoc`;
+	#$newdirectorystructurecommand = "mkdir " . $epoc . "/" .$tableDir;
+	#print "$newdirectorystructurecommand\n";
+	`mkdir $epoc; cd $epoc; mkdir $tableDir`;
+	
     #need to add ability to have paths
     $featureFile = @ARGV[1];
     #variable to hold new feature file output
@@ -69,11 +74,13 @@ if(@ARGV[0] eq "-e"){
 
 elsif(@ARGV[0] eq "-m"){
     $featureFile = @ARGV[1];
+	$tableDirectory = @ARGV[2];
+	$newFeatureFile = @ARGV[3];
     #get the feature file
     open(FEATUREFILE, $featureFile) or die("Could not open file $featureFile");		# Open the file
     foreach $line (<FEATUREFILE>) {
         if($line =~ /^<<(.+)>>$/){
-            open(FEATUREFILE, $1) or die("Could not open file $featureFile");		# Open the file
+            open(FEATUREFILE, $tableDirectory.$fileSeparator.$1) or die("Could not open file $tableDirectory$fileSeparator$1");		# Open the file
             @table = <FEATUREFILE>;
             #open the data file
             foreach $row (@table){
@@ -86,14 +93,14 @@ elsif(@ARGV[0] eq "-m"){
             $featureFileOutput .= $line;
         }
     }
-    writeNewFeatureFile("$featureFile.$epoc")
+    writeNewFeatureFile("$newFeatureFile")
 }
 else{
- print "-e to extract\n-m to merge\n";   
+ print "-e to extract\nExample: mandolin.pl -e name_of_feature_file\n-m to merge\nExample: mandolin.pl -m name_of_extracted_feature_file location_of_tables name_of_feature_file_to_be_made\n";   
 }
 
 sub writeTableData{
-    open (TABLEFILE, ">>$epoc$fileSeparator$tableName") or die("Could not open file $epoc$fileSeparator$tableName"); 
+    open (TABLEFILE, ">>$epoc$fileSeparator$tableDir$fileSeparator$tableName") or die("Could not open file $epoc$fileSeparator$tableDir$fileSeparator$tableName"); 
     print TABLEFILE $tableData; 
     close (TABLEFILE);
     $featureFileOutput .= "<<".$tableName.">>\n";
