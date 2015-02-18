@@ -45,10 +45,10 @@
         <p>mandolin is a short script written in perl which takes arguments telling it what to do. The reason for choosing perl (which admittedly doesn't feature large in BDD circles) is to have something that will work with any tooset, whether it be JBehave, Cucumber, Behat, Lettuce etc.</p>
         <ul>
         <li>to extract tables as pipe delimited test files: mandolin.pl -e name_of_feature_file.feature</li>
-        <li>it will then create a directory and place a new feature file with placeholders for tables and a series of text files each one containing a corresponding table. This may be very useful or very annoying if all you want to do is extract one or two tables. In that case, just extract the tables manually using a well-formed placeholder then perform a merge</li>
+        <li>it will then create a directory and place a new feature file with placeholders for tables and a sub-directory called tables which contains a series of text files each one containing a corresponding table. This may be very useful or very annoying if all you want to do is extract one or two tables. In that case, just extract the tables manually using a well-formed placeholder then perform a merge</li>
         </ul>
         <ul>
-        <li>to merge a feature file with one or more tables: mandolin.pl -m name_of_feature_file.feature</li>
+        <li>to merge a feature file with one or more tables: mandolin.pl -m name_of_feature_file.feature directory_containing_the_tables neame_of the_newly_merged_feature_file</li>
         </ul>
         <h2>Does it do anything else?</h2>
         <p>No - but it may be useful to have a way of managing locators. Page Objects and other paradigms for creating and managing an imprint of the system under test doesn't really have a representation in Gherkin. Perhaps it would be nice if mandolin substituted locater placeholders with values held in a corresponding repository. When the system under test changes, the corresponding entry in the repository would be changed rather.</p>
