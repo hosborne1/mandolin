@@ -3,20 +3,13 @@ mandolin
 
 slices up gherkin to make it more versatile
 
-gherkin is great but scenarios have embedded data used for the testing
+gherkin is great but scenarios and scenario outlines have embedded data used for the testing
 
-mandolin can do the following:
+mandolin can extract tables to and merge them back in again when:
 
-    strip out tables and place each one in a pipe separated file
-    merge a feature file (containing table placeholders) with a set of pipe separated data files
+The idea is that tables will be managed separately so that you can run the same scenario or scenario outline with different data. Why do this?
 
+1. You may need different data for working in different environments
 
-how it works:
+2. You may want to have different testing scope. e.g a table with several rows for one type of testing then a table with several thousand rows for a different type. You choose...
 
-
-what mandolin doesn't yet do:
-work with Windows - wouldn't be a big deal to do this...
-pull data files from other paths/urls
-
-what also considering:
-allowing locators to be extracted (not sure this is a good idea) and then merged back in (this seems like a better idea) for management as a repository
