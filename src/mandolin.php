@@ -97,7 +97,7 @@ else{
 
 function writeTableData($epoc,$tableDir,$tableName,$featureFileOutput,$tableData){
 	$tableFile = fopen($epoc.DIRECTORY_SEPARATOR.$tableDir.DIRECTORY_SEPARATOR.$tableName, "w") or die("Unable to open table file!");
-	$tableData = rtrim($tableData, "\n")
+	$tableData = rtrim($tableData, "\n");
 	fputs($tableFile, $tableData);
 	fclose($tableFile);
 	return "<<".$tableName.">>\n";
