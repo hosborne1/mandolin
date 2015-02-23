@@ -1,4 +1,4 @@
-#! /usr/bin/perl
+<%php
 
 #the idea is to to two things
 #1 identify tables in a feature file, replacing them with a table link and putting the contents into associated files
@@ -114,3 +114,5 @@ sub writeNewFeatureFile{
     close (NEWFEATUREFILE);
     print "Created feature file: $filename\n";
 }
+
+%>
