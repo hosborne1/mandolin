@@ -32,16 +32,52 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>What is mandolin?</h1>
-        <p>mandolin is a utility for slicing up Gherkin files which are used as part of Behavior Driven Development.</p>
+        <p>mandolin is a utility for slicing up Gherkin files which have been used for Behavior Driven Development.</p>
         <h2>Why?</h2>
-        <p>Gherkin is great but one of its main strengths, having a simple clear editable-by-anyone format, can also present issues with scalability and maintenance when reusing the scenarios for regression testing.</p>
-        <p>By providing a way to strip out and then re-merge tables to and from separate pipe delimited text files, the data can be managed in any way you like</p>
-        <p>mandolin can do the following:</p>
-        <ul>
-          <li>strip out tables and place each one in a pipe separated file</li>
-          <li>merge a feature file (containing table placeholders) with a set of pipe separated data files</li>
-        </ul>
-        <h2>How?</h2>
+        <p>Gherkin is great and ideally suited to BDD. However, one of its main strengths; having a simple clear editable-by-anyone format, can also present issues with scalability and maintenance when reusing the scenarios for regression testing.</p>
+        <p>By providing a way to strip out and then re-merge tables to and from separate pipe delimited text files, data, element identifiers, expected outcomes and scope can be managed in any way you like</p>
+		<p>Let's take an example loosely based on Dan North's <a href='http://dannorth.net/whats-in-a-story/'>ATM Dispenser</a></p>
+
+		<p>Account Holder checks balance<br>
+		As an Account Holder<br>
+		I want to check my balance at an ATM<br>
+		So that I can see how much money I have when the bank is closed<br>
+		
+		<p>Scenario Outline: Account Holder checks their balance<br>
+		Given the user enters card <card_number><br>
+		When the user enters their <pin><br>
+		Then I should see "Your account balance is <balance>"<br>
+
+		<p>Examples:<br>
+		|  card       |  pin   |  balance  |<br>
+		|  01234567   |  1234  |  $200.00  |<br>
+		|  01224568   |  9999  |  $0.00    |<br>
+	
+		<p>This is fine for specifying, developing and testing our feature. However, these details will only work in an environment with the accounts, PINs and balance correctly set up. How about running the same test in a different environment?</p>
+ 		
+		<h2>Using with different environments</h2>
+		<p>By running mandolin, the table will be removed and replace with a placeholder <<table_n>> and the data will be put in a pipe delimited file. Multiple files can exist for each environment.</p>
+
+		<h2>Getting test data from a different source - even for manual testing and refactoring</h2>
+		<p>Sometimes data needs to be retrieved from a database or other source. The temptation can be to incorporate this process into a step definition. That may be OK for fully automated testing but can mean loosing transparency. </p>
+		<p>By keeping the data extraction process separate and merging the data into the feature file, the resulting assets can be accessible to technical and non technical people alike and used for manual testing, or even refactoring for product development by business analyst, tester and developer.</p>
+
+		<h2>Testing with different scope<h2>
+		<p>Sanity, regression and exhaustive testing can all use the same steps but just with different amounts of data. Feature files can end up with multiple copies of the same steps - taxing our DRY principles. </p>
+		
+		<h2>Testing with different element locators<h2>
+		<p>Usually the way in which an element is located can and should stay the same. However, sometimes this isn't within your control. By putting the element locators into the tables, these can be managed separately. </p>
+
+		<h2>Testing with different expected outcomes<h2>
+		<p>Just as the balance will be different for a given account depending on the state of the system (has this account been used for any other testing), so too may other items which may need validating. Perhaps more controversially, different behaviours may also be tabulated.</p>
+
+		<p>Examples:<br>
+		|  card       |  pin   |  balance  | message                                                                                       |<br>
+		|  01234567   |  1234  |  $200.00  | How much cash would you like to withdraw and would you also like a loan?                      |<br>
+		|  01224568   |  9999  |  $0.00    | Have you thought about asking your boss for a raise?                                          |<br>
+		|  01214566   |  1111  |  -$200.00 | The time for excuses is over. Give us your money or we'll send someone round to persuade you. |<br>
+		
+        <h2>How do I use mandolin?</h2>
         <p>mandolin is a short script which takes arguments telling it what to do.</p>
         <ul>
         <li>to extract tables as pipe delimited test files: mandolin.pl -e name_of_feature_file.feature</li>
