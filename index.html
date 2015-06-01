@@ -55,20 +55,20 @@
 	
 		<p>This is fine for specifying, developing and testing our feature. However, these details will only work in an environment with the accounts, PINs and balance correctly set up. How about running the same test in a different environment?</p>
  		
-		<h2>Using with different environments</h2>
+		<h3>Using with different environments</h3>
 		<p>By running mandolin, the table will be removed and replace with a placeholder <<table_n>> and the data will be put in a pipe delimited file. Multiple files can exist for each environment.</p>
 
-		<h2>Getting test data from a different source - even for manual testing and refactoring</h2>
+		<h3>Getting test data from a different source - even for manual testing and refactoring</h3>
 		<p>Sometimes data needs to be retrieved from a database or other source. The temptation can be to incorporate this process into a step definition. That may be OK for fully automated testing but can mean loosing transparency. </p>
 		<p>By keeping the data extraction process separate and merging the data into the feature file, the resulting assets can be accessible to technical and non technical people alike and used for manual testing, or even refactoring for product development by business analyst, tester and developer.</p>
 
-		<h2>Testing with different scope<h2>
+		<h3>Testing with different scope</h3>
 		<p>Sanity, regression and exhaustive testing can all use the same steps but just with different amounts of data. Feature files can end up with multiple copies of the same steps - taxing our DRY principles. </p>
 		
-		<h2>Testing with different element locators<h2>
+		<h3>Testing with different element locators</h3>
 		<p>Usually the way in which an element is located can and should stay the same. However, sometimes this isn't within your control. By putting the element locators into the tables, these can be managed separately. </p>
 
-		<h2>Testing with different expected outcomes<h2>
+		<h3>Testing with different expected outcomes</h3>
 		<p>Just as the balance will be different for a given account depending on the state of the system (has this account been used for any other testing), so too may other items which may need validating. Perhaps more controversially, different behaviours may also be tabulated.</p>
 
 		<p>Examples:<br>
