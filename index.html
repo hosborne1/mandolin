@@ -32,21 +32,21 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>What is mandolin?</h1>
-        <p>mandolin is a utility for slicing up Gherkin files which have been used for Behavior Driven Development.</p>
+        <p>mandolin is a utility for slicing up gherkin files which have been used for Behavior Driven Development.</p>
         <h2>Why?</h2>
         <p>Gherkin is great and ideally suited to BDD. However, one of its main strengths; having a simple clear editable-by-anyone format, can also present issues with scalability and maintenance when reusing the scenarios for regression testing.</p>
-        <p>By providing a way to strip out and then re-merge tables to and from separate pipe delimited text files, data, element identifiers, expected outcomes and scope can be managed in any way you like</p>
+        <p>By providing a way to strip out and then re-merge tables to and from separate pipe delimited text files, data (as well as element locators, expected outcomes and scope) can be managed in any way you like.</p>
 		<p>Let's take an example loosely based on Dan North's <a href='http://dannorth.net/whats-in-a-story/'>ATM Dispenser</a></p>
 
-		<p>Account Holder checks balance<br>
+		<p><b>Account Holder checks balance<b><br>
 		As an Account Holder<br>
 		I want to check my balance at an ATM<br>
 		So that I can see how much money I have when the bank is closed<br>
 		
 		<p>Scenario Outline: Account Holder checks their balance<br>
-		Given the user enters card <card_number><br>
-		When the user enters their <pin><br>
-		Then I should see "Your account balance is <balance>"<br>
+		Given the user enters card &lt;card_number&gt;<br>
+		When the user enters their &lt;pin&gt;<br>
+		Then I should see "Your account balance is &lt;balance&gt;"<br>
 
 		<p>Examples:<br>
 		|  card       |  pin   |  balance  |<br>
@@ -56,11 +56,11 @@
 		<p>This is fine for specifying, developing and testing our feature. However, these details will only work in an environment with the accounts, PINs and balance correctly set up. How about running the same test in a different environment?</p>
  		
 		<h3>Using with different environments</h3>
-		<p>By running mandolin, the table will be removed and replace with a placeholder <<table_n>> and the data will be put in a pipe delimited file. Multiple files can exist for each environment.</p>
+		<p>By running mandolin, the table will be removed and replace with a placeholder &lt;&lt;table_n&gt;&gt; and the data will be put in a pipe delimited file. Multiple files can exist for each environment.</p>
 
 		<h3>Getting test data from a different source - even for manual testing and refactoring</h3>
 		<p>Sometimes data needs to be retrieved from a database or other source. The temptation can be to incorporate this process into a step definition. That may be OK for fully automated testing but can mean loosing transparency. </p>
-		<p>By keeping the data extraction process separate and merging the data into the feature file, the resulting assets can be accessible to technical and non technical people alike and used for manual testing, or even refactoring for product development by business analyst, tester and developer.</p>
+		<p>By keeping the data extraction process separate and merging the data into the feature file, the resulting assets can be accessible to technical and non-technical people alike and used for manual testing, or even refactoring for product development by business analyst, tester and developer.</p>
 
 		<h3>Testing with different scope</h3>
 		<p>Sanity, regression and exhaustive testing can all use the same steps but just with different amounts of data. Feature files can end up with multiple copies of the same steps - taxing our DRY principles. </p>
@@ -84,7 +84,7 @@
         <li>it will then create a new directory and place a new feature file with placeholders for tables and a sub-directory called tables which contains a series of text files each one containing a corresponding table. This may be very useful or very annoying if all you want to do is extract one or two tables. In that case, just extract the tables manually using a well-formed placeholder then perform a merge</li>
         </ul>
         <ul>
-        <li>to merge a feature file with one or more tables: mandolin.pl -m name_of_feature_file.feature directory_containing_the_tables neame_of the_newly_merged_feature_file</li>
+        <li>to merge a feature file with one or more tables: mandolin.pl -m name_of_feature_file.feature directory_containing_the_tables name_of the_newly_merged_feature_file</li>
         </ul>
         <h2>Can I have a script in something other than perl or php?</h2>
         <p>Yes, just let me know and I'll see what I can do. Or you could do it yourself...</p>
