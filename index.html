@@ -32,7 +32,7 @@
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
         <h1>What is mandolin?</h1>
-        <p>mandolin is a utility for slicing up gherkin files which have been used for Behavior Driven Development.</p>
+        <p>Mandolin is a utility for slicing up gherkin files which have been used for Behavior Driven Development.</p>
         <h2>Why?</h2>
         <p>Gherkin is great and ideally suited to BDD. However, one of its main strengths; having a simple clear editable-by-anyone format, can also present issues with scalability and maintenance when reusing the scenarios for regression testing.</p>
         <p>By providing a way to strip out and then re-merge tables to and from separate pipe delimited text files, data (as well as element locators, expected outcomes and scope) can be managed in any way you like.</p>
@@ -63,7 +63,7 @@
 		<p>By keeping the data extraction process separate and merging the data into the feature file, the resulting assets can be accessible to technical and non-technical people alike and used for manual testing, or even refactoring for product development by business analyst, tester and developer.</p>
 
 		<h3>Testing with different scope</h3>
-		<p>Sanity, regression and exhaustive testing can all use the same steps but just with different amounts of data. Feature files can end up with multiple copies of the same steps - taxing our DRY principles. </p>
+		<p>Sanity, regression and exhaustive testing can all use the same steps but just with different amounts of data. Feature files can end up with multiple copies of the same steps - taxing our DRY principles. By having different tables, with each having a different number of records and therefore a different level of scope, the same source feature file can be used to perform different staging of testing.</p>
 		
 		<h3>Testing with different element locators</h3>
 		<p>Usually the way in which an element is located can and should stay the same. However, sometimes this isn't within your control. By putting the element locators into the tables, these can be managed separately. </p>
@@ -76,7 +76,8 @@
 		|  01234567   |  1234  |  $200.00  | How much cash would you like to withdraw and would you also like a loan?                      |<br>
 		|  01224568   |  9999  |  $0.00    | Have you thought about asking your boss for a raise?                                          |<br>
 		|  01214566   |  1111  |  -$200.00 | The time for excuses is over. Give us your money or we'll send someone round to persuade you. |<br>
-		
+		<h3>Made with continuous integration in mind</h3>
+		<p>Mandolin can be run as a step prior to test execution. Different table files can be used according to tagging or other build parameters.</p>
         <h2>How do I use mandolin?</h2>
         <p>mandolin is a short script which takes arguments telling it what to do.</p>
         <ul>
