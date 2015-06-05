@@ -49,9 +49,9 @@
 		Then I should see "Your account balance is &lt;balance&gt;"<br>
 
 		<p>Examples:<br>
-		|&nbsp;card&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;pin&nbsp;&nbsp;|&nbsp;balance&nbsp;|<br>
+		|&nbsp;card&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;pin&nbsp;&nbsp;|&nbsp;balance&nbsp;|<br>
 		|&nbsp;01234567&nbsp;|&nbsp;1234&nbsp;|&nbsp;$200.00&nbsp;|<br>
-		|&nbsp;01224568&nbsp;|&nbsp;9999&nbsp;|&nbsp;$0.00&nbsp;&nbsp;&nbsp;|<br>
+		|&nbsp;01224568&nbsp;|&nbsp;9999&nbsp;|&nbsp;$0.00&nbsp;&nbsp;&nbsp;&nbsp;|<br>
 	
 		<p>This is fine for specifying, developing and testing our feature. However, these details will only work in an environment with the accounts, PINs and balance correctly set up. How about running the same test in a different environment?</p>
  		
@@ -72,10 +72,10 @@
 		<p>Just as the balance will be different for a given account depending on the state of the system (has this account been used for any other testing), so too may other items which may need validating. Perhaps more controversially, different behaviours may also be tabulated.</p>
 
 		<p>Examples:<br>
-		|&nbsp;card&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;pin&nbsp;&nbsp;|&nbsp;balance&nbsp;&nbsp;|&nbsp;message&nbsp;|
-		|&nbsp;01234567&nbsp;|&nbsp;1234&nbsp;|&nbsp;$200.00&nbsp;&nbsp;|&nbsp;How much cash would you like to withdraw?&nbsp;|
-		|&nbsp;01224568&nbsp;|&nbsp;9999&nbsp;|&nbsp;$0.00&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Have you thought about asking your boss for a raise?&nbsp;|
-		|&nbsp;01214566&nbsp;|&nbsp;1111&nbsp;|&nbsp;-$200.00&nbsp;|&nbsp;The time for excuses is over. Give us your money or we'll send someone round to persuade you.&nbsp;|
+		|&nbsp;card&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;pin&nbsp;&nbsp;|&nbsp;balance&nbsp;&nbsp;|&nbsp;message&nbsp;|<br>
+		|&nbsp;01234567&nbsp;|&nbsp;1234&nbsp;|&nbsp;$200.00&nbsp;&nbsp;|&nbsp;How much cash would you like to withdraw?&nbsp;|<br>
+		|&nbsp;01224568&nbsp;|&nbsp;9999&nbsp;|&nbsp;$0.00&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;Have you thought about asking your boss for a raise?&nbsp;|<br>
+		|&nbsp;01214566&nbsp;|&nbsp;1111&nbsp;|&nbsp;-$200.00&nbsp;|&nbsp;The time for excuses is over. Give us your money or we'll send someone round to persuade you.&nbsp;|<br>
 
 		<h3>Made with continuous integration in mind</h3>
 		<p>Mandolin can be run as a step prior to test execution. Different table files can be used according to tagging or other build parameters.</p>
